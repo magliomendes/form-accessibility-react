@@ -1,0 +1,73 @@
+body {
+  -ms-overflow-style: none;
+  margin: 0;
+}
+
+html {
+  min-height: calc(100vh);
+  line-height: 1.429;
+  font-size: 62.5%;
+  width: calc(100% + (100vw - 100%));
+  position: absolute;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+}
+
+* {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+  &:focus,
+  &:active {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+}
+
+p,
+span,
+input,
+label,
+button,
+div {
+  font-family: Arial, Helvetica, sans-serif;
+  &:after {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+$randomNumber: if(random(2) == 1, -50, 50);
+
+@keyframes Opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(10rem, 0, 0);
+    transform: translate3d(10rem, 0, 0);
+    position: absolute;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    position: relative;
+  }
+}
+
+div {
+  animation: Opacity 0.25s ease;
+  section {
+    transition: 0.2s;
+    animation: slideInLeft 1s forwards;
+  }
+}

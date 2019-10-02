@@ -1,0 +1,49 @@
+@import "../../../Assets/Variables";
+
+.actualStep {
+  opacity: 1;
+  position: absolute;
+  top: 40%;
+}
+
+.nextStep {
+  opacity: 0.5;
+  position: absolute;
+  top: calc(65% + 3rem);
+  pointer-events: none;
+
+  div {
+    button {
+      &:disabled,
+      &:not(:disabled) {
+        width: 5rem;
+        background-color: transparent;
+        border: 0.05rem solid $navyBlue;
+        &:after {
+          content: "";
+        }
+      }
+    }
+  }
+}
+
+.pastStep {
+  opacity: 0.5;
+  position: absolute;
+  top: calc(15% - 3rem);
+  pointer-events: none;
+
+  div {
+    button {
+      &:disabled,
+      &:not(:disabled) {
+        width: 5rem;
+        background-color: transparent;
+        border: 0.05rem solid $navyBlue;
+        &:after {
+          content: "";
+        }
+      }
+    }
+  }
+}
