@@ -1,0 +1,34 @@
+[debug] [2019-10-03T03:13:54.597Z] ----------------------------------------------------------------------
+[debug] [2019-10-03T03:13:54.598Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\magli\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-10-03T03:13:54.599Z] CLI Version:   7.4.0
+[debug] [2019-10-03T03:13:54.599Z] Platform:      win32
+[debug] [2019-10-03T03:13:54.599Z] Node Version:  v10.16.3
+[debug] [2019-10-03T03:13:54.599Z] Time:          Thu Oct 03 2019 00:13:54 GMT-0300 (GMT-03:00)
+[debug] [2019-10-03T03:13:54.599Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-10-03T03:13:54.605Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-03T03:13:54.606Z] > authorizing via signed-in user
+[debug] [2019-10-03T03:13:54.606Z] [iam] checking project dynamic-register-form for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2019-10-03T03:13:54.607Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dynamic-register-form:testIamPermissions  
+
+[debug] [2019-10-03T03:13:55.659Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-03T03:13:55.661Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/dynamic-register-form  
+ 
+[debug] [2019-10-03T03:13:57.856Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'dynamic-register-form'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2019-10-03T03:13:57.866Z] >>> HTTP REQUEST PUT https://dynamic-register-form.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+[debug] [2019-10-03T03:13:58.694Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database dynamic-register-form is valid
+[debug] [2019-10-03T03:13:58.696Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/dynamic-register-form/versions  
+
