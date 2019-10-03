@@ -5,15 +5,15 @@ import {
   InformationData,
   NewRegistrationButton
 } from "./PerfilStyles";
+import MaglioMendes from "../Magliomendes/Magliomendes";
 
 export default class Perfil extends React.Component {
-
-  componentDidMount() {
+  componentDidMount = () => {
     this.setState(History.location.state);
     setTimeout(
       function() {
         if (!this.state) {
-          return this.handleNewRegistration();
+          this.handleNewRegistration();
         }
       }.bind(this),
       1
@@ -81,6 +81,7 @@ export default class Perfil extends React.Component {
                 tabIndex="5"
               />
             </section>
+            <MaglioMendes step="" />
           </PerfilPage>
         )}
       </>
