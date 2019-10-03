@@ -1,34 +1,20 @@
 import styled from 'styled-components';
 import * as Variables from "../../../Assets/Variables.js";
 import information from "./information.svg";
-import loading from "./puff.svg";
-
-export const LoadingComponent = styled.div`
-    background-image: url(${loading});
-    background-position: center;
-    background-size: contain;
-    width: 5rem;
-    height: 5rem;
-    margin: auto;
-    transition: .2s;
-    animation: opacity .2s ease-in;
-`;
 
 export const RegisterPage = styled.div`
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     background-color: ${Variables.lightPink};
     position: relative;
-    flex-direction: column;
 `;
 
 export const Content = styled.section`
     width: 100vw;
     height: 80vh;
-    min-height: 56rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -112,13 +98,10 @@ export const Tooltip = styled.div`
     right: 0rem;
     border-radius: 2rem;
     padding: 1rem;
-    color: #FFF;
-    letter-spacing: .05rem;
-    font-weight: normal;
+    color: ${Variables.lightPink};
     font-size: 1.1rem;
     transition: .2s;
     opacity: 1;
-    text-align: center;
 `;
 
 
@@ -126,7 +109,7 @@ export const NextButton = styled.button`
     width: 5rem;
     border-radius: 2rem;
     height: 3rem;
-    background-color: ${Variables.navyBlue};
+    background-color: transparent;
     border: .05rem solid ${Variables.navyBlue};
     font-weight: normal;
     transition: .3s;
@@ -139,19 +122,20 @@ export const NextButton = styled.button`
         width: 100%;
         display: block;
         font-size: 1.4rem;
-        color: ${Variables.lightPink};
+        color: ${Variables.navyBlue};
     }
     &:hover, &:focus {
-        background-color: transparent;
+        background-color: ${Variables.navyBlue};
         &:after {
-            color:${Variables.navyBlue};
+            color: ${Variables.lightPink};
         }
     }
     &:disabled {
+        background-color: ${Variables.navyBlue};
+        border-color: ${Variables.navyBlue};
         opacity: .5;
         position: relative;
-        color: ${Variables.navyBlue};
-        cursor: not-allowed;
+        cursor: no-drop;
         &:after {
             color: ${Variables.lightPink};
         }
@@ -162,12 +146,11 @@ export const BackButton = styled.button`
     width: 5rem;
     border-radius: 2rem;
     height: 3rem;
-    background-color: ${Variables.navyBlue};
+    background-color: transparent;
     border: .05rem solid ${Variables.navyBlue};
     font-weight: normal;
     transition: .3s;
-    padding: .2rem;
-    
+
     &:after {
         content: "Back";
         text-align: center;
@@ -175,19 +158,10 @@ export const BackButton = styled.button`
         width: 100%;
         display: block;
         font-size: 1.4rem;
-        color: ${Variables.lightPink};
+        color: ${Variables.navyBlue};
     }
     &:hover, &:focus {
-        background-color: transparent;
-        &:after {
-            color:${Variables.navyBlue};
-        }
-    }
-    &:disabled {
-        opacity: .5;
-        position: relative;
-        color: ${Variables.navyBlue};
-        cursor: not-allowed;
+        background-color: ${Variables.navyBlue};
         &:after {
             color: ${Variables.lightPink};
         }
@@ -199,24 +173,25 @@ export const SubmitButton = styled.button`
     border-radius: 2rem;
     height: 3rem;
     color: #000;
-    background-color: ${Variables.navyBlue};
+    background-color: transparent;
     border: .05rem solid ${Variables.navyBlue};
     transition: .15s;
 
     &:after {
         content: "Submit the registration";
+        font-weight: bold;
         text-align: center;
         margin: 0;
         width: 100%;
         display: block;
         font-size: 1.4rem;
-        color: ${Variables.lightPink};
+        color: ${Variables.navyBlue};
     }
 
     &:hover, &:focus {
-    background-color: transparent;
+    background-color: ${Variables.navyBlue};
         &:after {
-            color: ${Variables.navyBlue};
+            color: ${Variables.lightPink};
         }
     }
 

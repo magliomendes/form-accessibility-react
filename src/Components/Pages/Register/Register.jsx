@@ -10,12 +10,9 @@ import {
   SubmitButton,
   Content,
   TooltipContent,
-  Tooltip,
-  LoadingComponent
+  Tooltip
 } from "./RegisterStyles";
 import "./RegisterStyles.scss";
-import fire from "./../../../fire";
-import MaglioMendes from "../Magliomendes/Magliomendes";
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -26,8 +23,7 @@ export default class Register extends React.Component {
       name: "",
       nickname: "",
       age: "",
-      email: "",
-      loading: false
+      email: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,30 +36,7 @@ export default class Register extends React.Component {
   }
 
   handleSubmit = e => {
-    this.setState({
-      loading: true
-    });
-    let form = {
-      name: this.state.name,
-      nickname: this.state.nickname,
-      age: this.state.age,
-      email: this.state.email
-    };
-    fire
-      .database()
-      .ref("registrationForm")
-      .push(form)
-      .then(() => {
-        setTimeout(
-          function() {
-            History.push("/Perfil", this.state);
-            this.setState({
-              loading: false
-            });
-          }.bind(this),
-          500
-        );
-      });
+    History.push("/Perfil", this.state);
   };
 
   changeStep = step => {
@@ -86,7 +59,7 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <RegisterPage className={this.state.loading ? "disabled" : {}}>
+      <RegisterPage>
         <Content>
           {this.state.step <= 2 && (
             <InputStepContent
@@ -120,7 +93,7 @@ export default class Register extends React.Component {
                   aria-label="Next"
                 ></NextButton>
                 {!this.stepValidation() && this.state.step === 1 && (
-                  <TooltipContent tabIndex={this.state.step === 1 ? 3 : -1}>
+                  <TooltipContent tabIndex={this.state.step === 1 ? 3 : -1} >
                     <Tooltip>
                       Name and Nickname must have at least 3 characters
                     </Tooltip>
@@ -135,7 +108,7 @@ export default class Register extends React.Component {
               className={
                 this.state.step === 2
                   ? "actualStep"
-                  : this.state.step === 3
+                  : "nextStep" && this.state.step === 3
                   ? "pastStep"
                   : "nextStep"
               }
@@ -189,26 +162,21 @@ export default class Register extends React.Component {
             <InputStepContent
               className={this.state.step === 3 ? "actualStep" : "nextStep"}
             >
-              {!this.state.loading && (
-                <div className="d-flex justify-content-between align-items-center flex-row-reverse">
-                  <SubmitButton
-                    onClick={() => this.handleSubmit()}
-                    tabIndex={this.state.step === 3 ? 1 : -1}
-                    aria-label="Submit informations"
-                  />
-                  <BackButton
-                    onClick={() => this.changeStep(2)}
-                    tabIndex={this.state.step === 3 ? 2 : -1}
-                    aria-label="Back"
-                  />
-                </div>
-              )}
-
-              {this.state.loading && <LoadingComponent />}
+              <div className="d-flex justify-content-between align-items-center flex-row-reverse">
+                <SubmitButton
+                  onClick={() => this.handleSubmit()}
+                  tabIndex={this.state.step === 3 ? 1 : -1}
+                  aria-label="Submit informations"
+                />
+                <BackButton
+                  onClick={() => this.changeStep(2)}
+                  tabIndex={this.state.step === 3 ? 2 : -1}
+                  aria-label="Back"
+                />
+              </div>
             </InputStepContent>
           )}
         </Content>
-        <MaglioMendes step={this.state.step} />
       </RegisterPage>
     );
   }

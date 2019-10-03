@@ -46,9 +46,7 @@ $randomNumber: if(random(2) == 1, -50, 50);
   }
 
   to {
-    :not(.nextStep) {
-      opacity: 1;
-    }
+    opacity: 1;
   }
 }
 
@@ -72,9 +70,4 @@ div {
     transition: 0.2s;
     animation: slideInLeft 1s forwards;
   }
-}
-
-.disabled {
-  pointer-events: none;
-  cursor: not-allowed;
 }

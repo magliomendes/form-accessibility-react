@@ -1,10 +1,16 @@
 @import "../../../Assets/Variables";
 
-.nextStep {
-  opacity: 0;
+.actualStep {
+  opacity: 1;
   position: absolute;
+  top: 40%;
+}
+
+.nextStep {
+  opacity: 0.5;
+  position: absolute;
+  top: calc(65% + 3rem);
   pointer-events: none;
-  top: calc(20vh + 26rem);
 
   div {
     button {
@@ -12,7 +18,7 @@
       &:not(:disabled) {
         width: 5rem;
         background-color: transparent;
-        border: 0.05rem solid transparent;
+        border: 0.05rem solid $navyBlue;
         &:after {
           content: "";
         }
@@ -21,19 +27,10 @@
   }
 }
 
-.actualStep {
-  opacity: 1;
-  position: absolute;
-  top: 10vh;
-  min-height: 13rem;
-  display: flex;
-  justify-content: center;
-}
-
 .pastStep {
   opacity: 0.5;
   position: absolute;
-  top: calc(10vh - 13.5rem);
+  top: calc(15% - 3rem);
   pointer-events: none;
 
   div {
@@ -42,7 +39,7 @@
       &:not(:disabled) {
         width: 5rem;
         background-color: transparent;
-        border: 0.05rem solid transparent;
+        border: 0.05rem solid $navyBlue;
         &:after {
           content: "";
         }
