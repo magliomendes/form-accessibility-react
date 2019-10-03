@@ -4,6 +4,12 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/fire.js
+/firebaserc
+/firebase.json
+/firebase-debug.log
+/package-lock.json
+/database.rules.json
 
 # testing
 /coverage
