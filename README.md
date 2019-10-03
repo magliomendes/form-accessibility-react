@@ -1,5 +1,5 @@
 ##Live
-Open [https://dynamic-register-form.firebaseapp.com/Register](https://dynamic-register-form.firebaseapp.com/Register) to view the live.
+Open [https://dynamic-register-form.firebaseapp.com](https://dynamic-register-form.firebaseapp.com) to view the live.
 
 ## Available Scripts
 
