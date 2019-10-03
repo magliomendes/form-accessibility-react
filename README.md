@@ -1,4 +1,4 @@
-##Live
+## Live
 Open [https://dynamic-register-form.firebaseapp.com](https://dynamic-register-form.firebaseapp.com) to view the live.
 
 ## Available Scripts
