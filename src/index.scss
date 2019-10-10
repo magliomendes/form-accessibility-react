@@ -38,8 +38,6 @@ div {
   }
 }
 
-$randomNumber: if(random(2) == 1, -50, 50);
-
 @keyframes Opacity {
   from {
     opacity: 0;
@@ -67,7 +65,7 @@ $randomNumber: if(random(2) == 1, -50, 50);
 }
 
 div {
-  animation: Opacity 0.25s ease;
+  animation: Opacity 0.25s linear forwards normal;
   section {
     transition: 0.2s;
     animation: slideInLeft 1s forwards;

@@ -28,9 +28,9 @@ export const InformationData = styled.div`
         background-color: transparent;
         transition: .4s;
         height: 3rem;
-        width: 80vw;
+        width: 90vw;
         min-width: 18rem;
-        max-width: 25rem;
+        max-width: 28rem;
         margin-bottom: 1rem;
         padding: 0 .5rem;
         border-radius: .1rem;
@@ -43,9 +43,9 @@ export const InformationData = styled.div`
 
 export const NewRegistrationButton = styled.button`
     width: 100%;
-    max-width: 25rem;
-    border-radius: 2rem;
-    height: 3rem;
+    max-width: 28rem;
+    border-radius: 1.5rem;
+    height: 4rem;
     background-color: ${Variables.lightPink};
     border: .05rem solid ${Variables.lightPink};
     transition: .3s;

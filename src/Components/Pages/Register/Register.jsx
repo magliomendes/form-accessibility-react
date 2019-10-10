@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { History } from "../../../Helpers/History";
 import { RegisterPage } from "./RegisterStyles";
 import {
@@ -40,9 +41,14 @@ export default class Register extends React.Component {
   }
 
   handleSubmit = e => {
-    this.setState({
-      loading: true
-    });
+    this.setState(
+      {
+        loading: true
+      },
+      () => {
+        ReactDOM.findDOMNode(this.refs.focusOnLoading).focus();
+      }
+    );
     let form = {
       name: this.state.name,
       nickname: this.state.nickname,
@@ -67,9 +73,32 @@ export default class Register extends React.Component {
   };
 
   changeStep = step => {
-    this.setState({
-      step: step
-    });
+    this.setState(
+      {
+        step: step
+      },
+      () => {
+        switch (step) {
+          case 1:
+            if (this.state.nickname) {
+              ReactDOM.findDOMNode(this.refs.nicknameInput).focus();
+            }
+            break;
+          case 2:
+            if (this.state.age) {
+              ReactDOM.findDOMNode(this.refs.emailInput).focus();
+            } else {
+              ReactDOM.findDOMNode(this.refs.ageInput).focus();
+            }
+            break;
+          case 3:
+            ReactDOM.findDOMNode(this.refs.submitButton).focus();
+            break;
+          default:
+            break;
+        }
+      }
+    );
   };
 
   stepValidation() {
@@ -78,7 +107,9 @@ export default class Register extends React.Component {
     } else if (this.state.step === 2) {
       return (
         this.state.age >= 1 &&
-        /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(
+          this.state.email
+        )
       );
     }
     return false;
@@ -86,30 +117,41 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <RegisterPage className={this.state.loading ? "disabled" : {}}>
-        <Content>
+      <RegisterPage>
+        <Content
+          style={
+            this.state.step === 3
+              ? { maxHeight: "50vh", minHeight: "50vh" }
+              : {}
+          }
+        >
           {this.state.step <= 2 && (
             <InputStepContent
               className={this.state.step === 1 ? "actualStep" : "pastStep"}
             >
               <Label htmlFor="name">Name</Label>
               <Input
+                autoFocus
+                value={this.state.name}
                 id="name"
                 type="text"
                 name="name"
                 onChange={this.handleChange}
                 autoComplete="off"
                 tabIndex={this.state.step === 1 ? 1 : -1}
+                ref="nameInput"
               />
 
               <Label htmlFor="nickname">Nickname</Label>
               <Input
+                value={this.state.nickname}
                 id="nickname"
                 type="text"
                 name="nickname"
                 onChange={this.handleChange}
                 autoComplete="off"
                 tabIndex={this.state.step === 1 ? 2 : -1}
+                ref="nicknameInput"
               />
 
               <div className="d-flex justify-content-between align-items-center flex-row-reverse">
@@ -136,12 +178,15 @@ export default class Register extends React.Component {
                 this.state.step === 2
                   ? "actualStep"
                   : this.state.step === 3
-                  ? "pastStep"
+                  ? this.state.loading
+                    ? "disabled pastStep"
+                    : "pastStep"
                   : "nextStep"
               }
             >
               <Label htmlFor="age">Age</Label>
               <Input
+                value={this.state.age}
                 id="age"
                 type="number"
                 name="age"
@@ -149,23 +194,26 @@ export default class Register extends React.Component {
                 onChange={this.handleChange}
                 autoComplete="off"
                 tabIndex={this.state.step === 2 ? 1 : -1}
+                ref="ageInput"
               />
 
               <Label htmlFor="email">Email</Label>
               <Input
+                value={this.state.email}
                 id="email"
                 type="text"
                 name="email"
                 onChange={this.handleChange}
                 autoComplete="off"
                 tabIndex={this.state.step === 2 ? 2 : -1}
+                ref="emailInput"
               />
 
               <div className="d-flex justify-content-between align-items-center flex-row-reverse">
                 <NextButton
                   onClick={() => this.changeStep(3)}
                   disabled={!this.stepValidation()}
-                  tabIndex={this.state.step === 2 ? 5 : -1}
+                  tabIndex={this.state.step === 2 ? 4 : -1}
                   aria-label="Next"
                 ></NextButton>
 
@@ -178,7 +226,7 @@ export default class Register extends React.Component {
                 )}
                 <BackButton
                   onClick={() => this.changeStep(1)}
-                  tabIndex={this.state.step === 2 ? 4 : -1}
+                  tabIndex={this.state.step === 2 ? 5 : -1}
                   aria-label="Back"
                 />
               </div>
@@ -195,6 +243,7 @@ export default class Register extends React.Component {
                     onClick={() => this.handleSubmit()}
                     tabIndex={this.state.step === 3 ? 1 : -1}
                     aria-label="Submit informations"
+                    ref="submitButton"
                   />
                   <BackButton
                     onClick={() => this.changeStep(2)}
@@ -204,7 +253,13 @@ export default class Register extends React.Component {
                 </div>
               )}
 
-              {this.state.loading && <LoadingComponent />}
+              {this.state.loading && (
+                <LoadingComponent
+                  ref="focusOnLoading"
+                  aria-label="Loading to complete the registration. Please, wait."
+                  tabIndex="1"
+                />
+              )}
             </InputStepContent>
           )}
         </Content>
