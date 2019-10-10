@@ -18,7 +18,7 @@ export const RegisterPage = styled.div`
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     background-color: ${Variables.lightPink};
     position: relative;
@@ -28,12 +28,14 @@ export const RegisterPage = styled.div`
 export const Content = styled.section`
     width: 100vw;
     height: 80vh;
+    max-height: 80vh;
     min-height: 56rem;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    transition: 1s;
 `;
 
 
@@ -45,19 +47,19 @@ export const InputStepContent = styled.div`
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: ease;
-    width: 100vw;
+    width: 90vw;
     min-width: 18rem;
-    max-width: 25rem;
+    max-width: 28rem;
 `;
 
 export const Input = styled.input`
     border: 0;
     border: .15rem solid transparent;
     transition: .4s;
-    height: 3rem;
-    width: 100vw;
+    height: 4rem;
+    width: 90vw;
     min-width: 18rem;
-    max-width: 25rem;
+    max-width: 28rem;
     margin-bottom: 1rem;
     padding: 0 1rem;
     border-radius: .5rem;
@@ -89,7 +91,7 @@ export const TooltipContent = styled.div`
     background-position: center;
     background-size: contain;
     position: absolute;
-    right: 6.5rem;
+    right: 8rem;
     width: 2rem;
     height: 2rem;
     cursor: help;
@@ -123,9 +125,9 @@ export const Tooltip = styled.div`
 
 
 export const NextButton = styled.button`
-    width: 5rem;
-    border-radius: 2rem;
-    height: 3rem;
+    width: 7rem;
+    border-radius: 1.5rem;
+    height: 4rem;
     background-color: ${Variables.navyBlue};
     border: .05rem solid ${Variables.navyBlue};
     font-weight: normal;
@@ -159,9 +161,9 @@ export const NextButton = styled.button`
 `;
 
 export const BackButton = styled.button`
-    width: 5rem;
-    border-radius: 2rem;
-    height: 3rem;
+width: 7rem;
+border-radius: 1.5rem;
+height: 4rem;
     background-color: ${Variables.navyBlue};
     border: .05rem solid ${Variables.navyBlue};
     font-weight: normal;
@@ -196,8 +198,8 @@ export const BackButton = styled.button`
 
 export const SubmitButton = styled.button`
     width: calc(100% - 8rem);
-    border-radius: 2rem;
-    height: 3rem;
+    border-radius: 1.5rem;
+    height: 4rem;
     color: #000;
     background-color: ${Variables.navyBlue};
     border: .05rem solid ${Variables.navyBlue};

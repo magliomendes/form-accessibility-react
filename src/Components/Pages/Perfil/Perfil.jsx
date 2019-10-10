@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { History } from "../../../Helpers/History";
 import {
   PerfilPage,
@@ -14,6 +15,8 @@ export default class Perfil extends React.Component {
       function() {
         if (!this.state) {
           this.handleNewRegistration();
+        } else {
+        ReactDOM.findDOMNode(this.refs.nameLabel).focus();
         }
       }.bind(this),
       1
@@ -38,6 +41,7 @@ export default class Perfil extends React.Component {
                   name="name"
                   value={this.state.name}
                   tabIndex="1"
+                  ref="nameLabel"
                   readOnly
                 />
               </InformationData>

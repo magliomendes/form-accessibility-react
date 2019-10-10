@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/fire.js
+/fireconfig.js
 /firebaserc
 /firebase.json
 /firebase-debug.log
